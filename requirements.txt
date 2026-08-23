@@ -8,3 +8,5 @@ langchain-openai
 pandas
 langchain-text-splitters
 streamlit
+openpyxl
+langchain-chroma
