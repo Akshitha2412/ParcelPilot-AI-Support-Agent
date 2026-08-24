@@ -27,9 +27,9 @@ def load_pdfs():
 
         filename = pdf_file.name.lower()
 
-        # --------------------------------
+   
         # Identify document type
-        # --------------------------------
+    
 
         if "northstar" in filename:
 
@@ -75,9 +75,9 @@ def load_pdfs():
             customer = None
             priority = 0
 
-        # --------------------------------
+     
         # Add metadata to every page
-        # --------------------------------
+     
 
         for doc in docs:
 
@@ -155,7 +155,7 @@ def search_documents(query, k=8, user_role="support"):
         "unknown": 0
     }
     # Sort by authority
-    # --------------------------------------------------
+   
 
     results = sorted(
         results,
