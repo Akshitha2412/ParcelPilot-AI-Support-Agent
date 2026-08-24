@@ -13,10 +13,9 @@ def lookup_data(
     user_role: str = "support"
 ) -> str:
 
-    # ========================================================
+    
     # ACCESS CONTROL - DATA LAYER
-    # ========================================================
-
+   
     if user_role not in ALLOWED_READ_ROLES:
         return (
             "ACCESS_DENIED: You do not have permission "
@@ -29,9 +28,9 @@ def lookup_data(
 
     results = []
 
-    # ========================================================
+   
     # EXTRACT IDENTIFIERS
-    # ========================================================
+   
 
     order_ids = re.findall(
         r"\bORD-\d+\b",
@@ -48,9 +47,9 @@ def lookup_data(
         query.upper()
     )
 
-    # ========================================================
+    
     # EXACT ID SEARCH
-    # ========================================================
+   
 
     for sheet_name in excel_file.sheet_names:
 
@@ -96,9 +95,9 @@ def lookup_data(
             )
 
 
-    # ========================================================
+   
     # NORMAL TEXT SEARCH
-    # ========================================================
+  
 
     if not results:
 
@@ -141,10 +140,8 @@ def lookup_data(
                     f"{matches.to_string(index=False)}"
                 )
 
-
-    # ========================================================
-    # NO RESULTS
-    # ========================================================
+  # NO RESULTS
+  
 
     if not results:
 
