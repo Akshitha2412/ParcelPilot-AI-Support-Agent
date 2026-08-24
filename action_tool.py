@@ -19,10 +19,9 @@ def create_escalation(
     user_role: str = "support"
 ) -> str:
 
-    # --------------------------------------------------
+   
     # 1. ACCESS CONTROL
-    # --------------------------------------------------
-
+    
     if user_role not in ALLOWED_ESCALATION_ROLES:
 
         return (
@@ -31,10 +30,9 @@ def create_escalation(
             "Manager approval is required."
         )
 
-    # --------------------------------------------------
+   
     # 2. HUMAN CONFIRMATION
-    # --------------------------------------------------
-
+   
     if not confirmed:
 
         return (
@@ -45,10 +43,9 @@ def create_escalation(
             "creating the escalation."
         )
 
-    # --------------------------------------------------
+  
     # 3. CREATE ESCALATION
-    # --------------------------------------------------
-
+   
     escalation = {
         "ticket_id": ticket_id,
         "reason": reason,
@@ -57,10 +54,8 @@ def create_escalation(
         "status": "created"
     }
 
-    # --------------------------------------------------
     # 4. LOAD EXISTING ESCALATIONS
-    # --------------------------------------------------
-
+   
     existing = []
 
     if ESCALATION_FILE.exists():
@@ -79,10 +74,9 @@ def create_escalation(
 
             existing = []
 
-    # --------------------------------------------------
+   
     # 5. SAVE NEW ESCALATION
-    # --------------------------------------------------
-
+   
     existing.append(escalation)
 
     with open(
@@ -97,10 +91,9 @@ def create_escalation(
             indent=4
         )
 
-    # --------------------------------------------------
+   
     # 6. RETURN RESULT
-    # --------------------------------------------------
-
+   
     return (
         "ESCALATION_CREATED\n"
         f"Ticket ID: {ticket_id}\n"
