@@ -14,9 +14,9 @@ from action_tool import create_escalation
 load_dotenv()
 
 
-# ============================================================
+
 # AVAILABLE ROLES
-# ============================================================
+
 
 VALID_ROLES = {
     "support",
@@ -24,9 +24,9 @@ VALID_ROLES = {
 }
 
 
-# ============================================================
+
 # CREATE AGENT FOR CURRENT USER ROLE
-# ============================================================
+
 
 @lru_cache(maxsize=2)
 def get_agent(user_role: str):
@@ -35,9 +35,9 @@ def get_agent(user_role: str):
         raise ValueError("Invalid user role")
 
 
-    # ========================================================
+    
     # TOOL 1: DOCUMENT SEARCH
-    # ========================================================
+  
 
     @tool
     def document_search(query: str) -> str:
@@ -93,9 +93,9 @@ def get_agent(user_role: str):
         return "\n\n---\n\n".join(output)
 
 
-    # ========================================================
+  
     # TOOL 2: STRUCTURED DATA LOOKUP
-    # ========================================================
+ 
 
     @tool
     def structured_data_lookup(query: str) -> str:
@@ -118,9 +118,9 @@ def get_agent(user_role: str):
         )
 
 
-    # ========================================================
+   
     # TOOL 3: ESCALATION ACTION
-    # ========================================================
+    
 
     @tool
     def escalation_action(
@@ -143,9 +143,9 @@ def get_agent(user_role: str):
         )
 
 
-    # ========================================================
+   
     # SYSTEM PROMPT
-    # ========================================================
+    
 
     SYSTEM_PROMPT = f"""
 
@@ -468,9 +468,9 @@ If human review is required, explain why.
     )
 
 
-# ============================================================
+
 # FUNCTION USED BY STREAMLIT
-# ============================================================
+
 
 def ask_agent(
     question: str,
